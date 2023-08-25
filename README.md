@@ -12,8 +12,8 @@ can be easily called from other programs.
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
-- [Usage](#usage)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Examples](#examples)
     - [Alert on completion of shell commands](#alert-on-completion-of-shell-commands)
     - [Periodic messages with cron](#periodic-messages-with-cron)
@@ -27,6 +27,37 @@ can be easily called from other programs.
 - [Uninstallation](#uninstallation)
 
 <!-- markdown-toc end -->
+
+# Installation
+
+Install telegram-send system-wide with pip:
+``` shell
+sudo pip3 install telegram-send
+```
+
+Or if you want to install it for a single user without root permissions:
+``` shell
+pip3 install telegram-send
+```
+
+If installed for a single user you need to add `~/.local/bin` to their path,
+refer to this [guide][] for instructions.
+
+And finally configure it with `telegram-send --configure` if you want to send to
+your account, `telegram-send --configure-group` to send to a group or with
+`telegram-send --configure-channel` to send to a channel.
+
+Use the `--config` option to use multiple configurations. For example to set up
+sending to a channel in a non-default configuration: `telegram-send --config
+channel.conf --configure-channel`. Then always specify the config file to use
+it: `telegram-send --config channel.conf "Bismillah"`.
+
+The `-g` option uses the global configuration at `/etc/telegram-send.conf`.
+Configure it once: `sudo telegram-send -g --configure` and all users on the
+system can send messages with this config: `telegram-send -g "GNU"` (provided
+you've installed it system-wide.)
+
+[guide]: https://web.archive.org/web/20220225091115/https://www.rahielkasim.com/installing-programs-from-non-system-package-managers-without-sudo/
 
 # Usage
 
@@ -108,37 +139,6 @@ telegram-send --image moon.jpg --caption "The __Moon__ at *Night*" --format mark
 Telegram-send integrates into your file manager (Thunar, Nautilus and Nemo):
 
 ![](https://cloud.githubusercontent.com/assets/6839756/16735957/51c41cf4-478b-11e6-874a-282f559fb9d3.png)
-
-# Installation
-
-Install telegram-send system-wide with pip:
-``` shell
-sudo pip3 install telegram-send
-```
-
-Or if you want to install it for a single user without root permissions:
-``` shell
-pip3 install telegram-send
-```
-
-If installed for a single user you need to add `~/.local/bin` to their path,
-refer to this [guide][] for instructions.
-
-And finally configure it with `telegram-send --configure` if you want to send to
-your account, `telegram-send --configure-group` to send to a group or with
-`telegram-send --configure-channel` to send to a channel.
-
-Use the `--config` option to use multiple configurations. For example to set up
-sending to a channel in a non-default configuration: `telegram-send --config
-channel.conf --configure-channel`. Then always specify the config file to use
-it: `telegram-send --config channel.conf "Bismillah"`.
-
-The `-g` option uses the global configuration at `/etc/telegram-send.conf`.
-Configure it once: `sudo telegram-send -g --configure` and all users on the
-system can send messages with this config: `telegram-send -g "GNU"` (provided
-you've installed it system-wide.)
-
-[guide]: https://www.rahielkasim.com/installing-programs-from-non-system-package-managers-without-sudo/
 
 # Examples
 
